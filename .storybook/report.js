@@ -1,5 +1,5 @@
 import React from 'react'
-import { each, reduce } from '../../helpers/lodash'
+import { each, reduce } from '../src/helpers/lodash'
 import PropTypes from 'prop-types'
 import PROP_TYPE_SECRET from 'prop-types/lib/ReactPropTypesSecret'
 import { number, color, select, array, boolean } from '@storybook/addon-knobs'
