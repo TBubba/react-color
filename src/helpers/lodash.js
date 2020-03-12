@@ -35,3 +35,29 @@ export const each = (collection, iteratee) => {
     }
   }
 }
+
+export const merge = (object, ...sources) => {
+  for (let i = 0; i < sources.length; i++) {
+    recursiveReplace(object, sources[i])
+  }
+
+  return object
+}
+
+const recursiveReplace = (object, source) => {
+  if (!source) {
+    return object
+  }
+
+  for (const key in source) {
+    const objectVal = object[key]
+    const sourceVal = source[key]
+
+    if (typeof sourceVal === 'object' && sourceVal !== null &&
+        typeof objectVal === 'object' && objectVal !== null) {
+      recursiveReplace(objectVal, sourceVal)
+    } else if (sourceVal !== undefined) {
+      object[key] = sourceVal
+    }
+  }
+}

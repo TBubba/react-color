@@ -1,8 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import reactCSS from 'reactcss'
-import merge from 'lodash/merge'
-
+import { merge } from '../../helpers/lodash'
 import { ColorWrap, Hue } from '../common'
 import SliderSwatches from './SliderSwatches'
 import SliderPointer from './SliderPointer'

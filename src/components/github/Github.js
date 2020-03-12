@@ -1,8 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import reactCSS from 'reactcss'
-import { map } from '../../helpers/lodash'
-import merge from 'lodash/merge'
+import { map, merge } from '../../helpers/lodash'
 
 import { ColorWrap } from '../common'
 import GithubSwatch from './GithubSwatch'
