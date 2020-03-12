@@ -1,5 +1,6 @@
 import React from 'react'
 import _ from 'lodash'
+import { each } from '../../helpers/lodash'
 import PropTypes from 'prop-types'
 import PROP_TYPE_SECRET from 'prop-types/lib/ReactPropTypesSecret'
 import { number, color, select, array, boolean } from '@storybook/addon-knobs'
@@ -9,7 +10,7 @@ const THIS_STRING_SHOULDNT_MATCH = 'THIS_STRING_SHOULDNT_MATCH'
 export const generatePropReport = ({ propTypes, defaultProps }) => {
   const props = {}
   // console.log(propTypes.foo({ ['foo']: THIS_STRING_SHOULDNT_MATCH }, 'foo', null, 'prop', 'foo', PROP_TYPE_SECRET))
-  _.each(propTypes, (type, prop) => {
+  each(propTypes, (type, prop) => {
     const error = type({[prop]: THIS_STRING_SHOULDNT_MATCH}, prop, 'Component', 'prop', prop, PROP_TYPE_SECRET)
     if (error) {
       const argType = {
@@ -34,7 +35,7 @@ export const generatePropReport = ({ propTypes, defaultProps }) => {
     }
   })
 
-  // _.each(defaultProps, (defaultValue, prop) => {
+  // each(defaultProps, (defaultValue, prop) => {
   //   props[prop] = { ...props[prop], default: defaultValue }
   // })
 
