@@ -44,6 +44,37 @@ export const merge = (object, ...sources) => {
   return object
 }
 
+export const reduce = function(collection, iteratee, initialAccumulator) {
+  const initAccum = arguments.length < 3
+  let accumulator = initialAccumulator
+
+  if (Array.isArray(collection)) {
+    let index = -1
+    const length = collection === null ? 0 : collection.length
+
+    if (initAccum && length > 0) {
+      accumulator = collection[++index]
+    }
+
+    while (++index < length) {
+      accumulator = iteratee(accumulator, collection[index], index, collection)
+    }
+  } else {
+    let index = -1
+    const keys = Object.keys(collection)
+
+    if (initAccum && keys.length > 0) {
+      accumulator = collection[keys[++index]]
+    }
+
+    while (++index < keys.length) {
+      accumulator = iteratee(accumulator, collection[keys[index]], keys[index], collection)
+    }
+  }
+
+  return accumulator
+}
+
 const recursiveReplace = (object, source) => {
   if (!source) {
     return object
