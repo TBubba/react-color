@@ -222,3 +222,23 @@ export const debounce = function(func, initialWait, options) {
 
   return debounced
 }
+
+export const throttle = function(func, wait, options) {
+  var leading = true
+  var trailing = true
+
+  if (typeof func !== 'function') {
+    throw new TypeError('Expected a function')
+  }
+
+  if (typeof options === 'object' && options !== null) {
+    leading = 'leading' in options ? !!options.leading : leading // eslint-disable-line no-implicit-coercion
+    trailing = 'trailing' in options ? !!options.trailing : trailing // eslint-disable-line no-implicit-coercion
+  }
+
+  return debounce(func, wait, {
+    'leading': leading,
+    'maxWait': wait,
+    'trailing': trailing,
+  })
+}
