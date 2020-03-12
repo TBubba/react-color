@@ -13,7 +13,7 @@ export const map = (collection, iteratee) => {
     result = Array(keys.length)
 
     for (let i = 0; i < keys.length; i++) {
-      result[i] = iteratee(collection[i], keys[i], collection)
+      result[i] = iteratee(collection[keys[i]], keys[i], collection)
     }
   }
 
@@ -31,7 +31,7 @@ export const each = (collection, iteratee) => {
     const keys = Object.keys(collection)
 
     for (let i = 0; i < keys.length; i++) {
-      iteratee(collection[i], keys[i], collection)
+      iteratee(collection[keys[i]], keys[i], collection)
     }
   }
 }
