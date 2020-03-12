@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import reactCSS from 'reactcss'
-import map from 'lodash/map'
+import { map } from '../../helpers/lodash'
 import merge from 'lodash/merge'
 import * as material from 'material-colors'
 
